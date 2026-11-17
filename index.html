@@ -411,6 +411,19 @@
             
             .approval-box { display: table !important; margin-left: auto !important; width: 6.4cm !important; }
 
+            .print-dashboard {
+                display: flex !important; align-items: center !important; gap: 14px !important;
+                margin: 4px 0 10px 0 !important; padding: 8px 10px !important;
+                border: 1px solid #000 !important; border-radius: 0 !important;
+                box-shadow: none !important; background: transparent !important;
+                break-inside: avoid !important;
+            }
+            .print-dashboard .chart-container { width: 110px !important; height: 110px !important; flex-shrink: 0; overflow: hidden !important; }
+            .print-dashboard canvas { width: 110px !important; height: 110px !important; max-width: 110px !important; max-height: 110px !important; }
+            .print-dashboard .summary-stats-col { display: flex !important; flex-direction: column; gap: 6px; }
+            .print-dashboard .summary-badge { font-size: 9pt !important; padding: 3px 8px !important; }
+            .print-dashboard > div:last-child { flex: 1; font-size: 9pt !important; }
+
             .matrix-guide-card { border: 1px solid #000 !important; box-shadow: none !important; margin-bottom: 12px !important; padding: 10px 12px !important; }
             .matrix-guide-table th, .matrix-guide-table td { border-color: #000 !important; }
 
@@ -614,7 +627,7 @@
             <h2>📑 1단계: 정기 위험성평가 (목록형) <span class="team-badge" id="badge_step1">전체 (총괄 관리자) 전용</span></h2>
         </div>
 
-        <div class="dashboard-wrapper no-print">
+        <div class="dashboard-wrapper print-dashboard">
             <div class="chart-container">
                 <canvas id="riskChart"></canvas>
             </div>
@@ -1235,7 +1248,7 @@
 
     function savePDFPage() {
         const today = new Date().toISOString().split('T')[0];
-        const filename = `${currentTeamSession}_통합위험성평가_및_종사자의견_백업_${today}`;
+        const filename = `${currentTeamSession}_통합위험성평가_및_종사자의견서_백업_${today}`;
 
         const prevTitle = document.title;
         let parentPrevTitle = '';
